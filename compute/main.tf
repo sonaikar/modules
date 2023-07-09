@@ -11,7 +11,6 @@ locals {
 }
 
 data "aws_ec2_instance_type_offerings" "ec2-image" {
-  most_recent = true
 
   filter {
     name   = "instance-type"
@@ -21,11 +20,8 @@ data "aws_ec2_instance_type_offerings" "ec2-image" {
     name   = "location"
     values = ["us-west-2"]
   }
-  filter {
-    name   = "owner"
-    values = "679593333241"
-  }
-  location_type = "us-west-2a"
+  owners = ["679593333241"]
+
 }
 
 resource "aws_instance" "intuitive_instance" {
