@@ -22,7 +22,7 @@ data "aws_ami" "ec2-image" {
 
 }
 
-resource "aws_key_pair" "deployer" {
+data "aws_key_pair" "deployer" {
   key_name   = "deployer-key"
   public_key = file("./ssh-keys/vm-ssh.pub")
 }
@@ -31,7 +31,7 @@ resource "aws_instance" "intuitive_instance" {
   count = var.vm-count
 
   ami             = data.aws_ami.ec2-image.id
-  key_name        = var.ssh_key_name
+  key_name        = data.aws_key_pair.deployer.key_name
   security_groups = [var.security_group_id]
   subnet_id       = var.subnet_id
   instance_type   = var.instance_type
