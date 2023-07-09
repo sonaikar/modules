@@ -12,6 +12,7 @@ locals {
 
 data "aws_ec2_instance_type_offerings" "ec2-image" {
   most_recent = true
+
   filter {
     name   = "instance-type"
     values = ["t2.micro", "t3.micro"]
@@ -22,7 +23,7 @@ data "aws_ec2_instance_type_offerings" "ec2-image" {
   }
   filter {
     name   = "name"
-    values = "2023.04.16.Ubuntu.22.04.*"
+    values = "*Ubuntu.22.04.*"
   }
   location_type = "us-west-2a"
 }
