@@ -10,11 +10,27 @@ locals {
   }
 }
 
+data "aws_ec2_instance_type_offerings" "ec2-image" {
+  most_recent = true
+  filter {
+    name   = "instance-type"
+    values = ["t2.micro", "t3.micro"]
+  }
+  filter {
+    name   = "location"
+    values = ["us-west-2"]
+  }
+  filter {
+    name   = "name"
+    values = "2023.04.16.Ubuntu.22.04.*"
+  }
+  location_type = "us-west-2a"
+}
 
 resource "aws_instance" "intuitive_instance" {
   count = var.vm-count
 
-  ami             = "ami-08133f9f7ea98ef23" #jammy jellyfish Ubuntu 22.04
+  ami             = data.aws_ec2_instance_type_offerings.ec2-image.id
   key_name        = var.ssh_key_name
   security_groups = [var.security_group_id]
   subnet_id       = var.subnet_id
