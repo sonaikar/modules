@@ -10,7 +10,7 @@ locals {
   }
 }
 
-data "aws_ec2_instance_type_offerings" "ec2-image" {
+data "aws_ami" "ec2-image" {
 
   most_recent = true
   owners      = ["amazon"]
