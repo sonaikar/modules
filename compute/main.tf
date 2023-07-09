@@ -22,8 +22,8 @@ data "aws_ec2_instance_type_offerings" "ec2-image" {
     values = ["us-west-2"]
   }
   filter {
-    name   = "name"
-    values = "*Ubuntu.22.04.*"
+    name   = "owner"
+    values = "679593333241"
   }
   location_type = "us-west-2a"
 }
