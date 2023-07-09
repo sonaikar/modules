@@ -3,6 +3,7 @@ variable "create_vpc" {}
 variable "cidr" {}
 variable "region" {}
 variable "availability_zone" {}
+variable "route_cidr" {}
 
 variable "enable_dns_hostnames" {
   type = bool
