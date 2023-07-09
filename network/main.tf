@@ -30,7 +30,7 @@ resource "aws_subnet" "intuitive-subnet" {
 
   vpc_id                  = aws_vpc.intuitive-vpc.id
   cidr_block              = var.cidr
-  availability_zone       = var.region
+  availability_zone       = var.availability_zone
   map_public_ip_on_launch = true
 
   tags = merge(local.local-tag, local.common-tags)
