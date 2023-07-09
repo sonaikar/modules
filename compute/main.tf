@@ -24,7 +24,7 @@ data "aws_ami" "ec2-image" {
 
 resource "aws_key_pair" "deployer" {
   key_name   = "deployer-key"
-  public_key = file("ssh-keys/vm-ssh.pub")
+  public_key = file("./ssh-keys/vm-ssh.pub")
 }
 
 resource "aws_instance" "intuitive_instance" {
