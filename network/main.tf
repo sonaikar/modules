@@ -29,7 +29,7 @@ resource "aws_internet_gateway" "internet-gateway" {
 resource "aws_subnet" "intuitive-subnet" {
 
   vpc_id                  = aws_vpc.intuitive-vpc.id
-  cidr_block              = var.cidr
+  cidr_block              = var.route_cidr
   availability_zone       = var.availability_zone
   map_public_ip_on_launch = true
 
