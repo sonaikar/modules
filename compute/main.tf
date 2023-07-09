@@ -25,7 +25,7 @@ data "aws_ami" "ec2-image" {
 resource "aws_instance" "intuitive_instance" {
   count = var.vm-count
 
-  ami             = data.aws_ec2_instance_type_offerings.ec2-image.id
+  ami             = data.aws_ami.ec2-image.id
   key_name        = var.ssh_key_name
   security_groups = [var.security_group_id]
   subnet_id       = var.subnet_id
